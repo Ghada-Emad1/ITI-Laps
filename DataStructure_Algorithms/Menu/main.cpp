@@ -51,13 +51,10 @@ public:
         cout<<"deep copy constructor"<<endl;
     }
 
-    void AddEmp(int id, const char *Name) {
+    void AddEmp(int id, char *Name) {
         Node *temp = new Node();
         temp->id = id;
         strcpy(temp->Name, Name);
-
-
-
         if (head == NULL) {
             head = tail = temp;
         } else {
@@ -313,11 +310,11 @@ int main() {
 
                     int New_Id,ExistingId;
                     char New_Name[30];
-                    cout<<"Enter Existing Id";
+                    cout<<"Enter Existing Id : ";
                     cin>>ExistingId;
-                    cout<<"Enter Id : ";
+                    cout<<"Enter New Id : ";
                     cin>>New_Id;
-                    cout<<"Enter Name : ";
+                    cout<<"Enter New Name : ";
                     cin>>New_Name;
                     Emp.insertById(New_Id,New_Name,ExistingId);
                     break;
