@@ -3,6 +3,7 @@
 using namespace std;
 class Publication{
 protected:
+
     char title[30];
     float price;
 public:

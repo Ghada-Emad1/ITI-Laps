@@ -2,6 +2,7 @@
 #include<string.h>
 using namespace std;
 class Sales{
+    
     float arrSale[3];
 public:
     void getSales(){
