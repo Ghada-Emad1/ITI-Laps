@@ -304,6 +304,7 @@ td.contact-content {
 .social img{
     margin-right: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .social h4{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
