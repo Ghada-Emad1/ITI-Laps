@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int Power(int num,int pow){
+int Power(int &num,int pow){
     if(pow==0){
         return 1;
     }

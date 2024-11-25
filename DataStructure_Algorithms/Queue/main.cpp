@@ -55,10 +55,10 @@ int main()
     q1.Enqueue(14);
     int x;
     if(q1.Dequeue(x)){
-        cout<<x<<endl;
+        cout<<x<<" ";
     }
     if(q1.Dequeue(x)){
-        cout<<x<<endl;
+        cout<<x<<" ";
     }
     if(q1.Dequeue(x)){
         cout<<x;
