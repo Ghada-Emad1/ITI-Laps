@@ -33,7 +33,7 @@ public:
     }
 
      Stack(Stack &s){
-         cout<<"copy array\n";
+         cout<<"copy destructor\n";
          tos=s.tos;
          size=s.size;
          arr=new int[size];

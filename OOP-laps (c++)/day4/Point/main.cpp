@@ -6,12 +6,15 @@ class Point{
     int y;
 public:
     Point(){
+        cout<<"paramless constructor";
         x=y;
     }
     point (int _x){
+        cout<<"constructor with one parameters";
         x=_x;
     }
     Point(int _x,int _y){
+        cout<<"Constructor with two parameters ";
         x=_x;
         y=_y;
     }

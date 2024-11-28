@@ -79,7 +79,7 @@ public:
 };
 
 void viewContent(Stack s){
-    for(int i=0;i<=s.tos;i++){
+    for(int i=s.tos;i>=0;i--){
         cout<<s.arr[i]<<" ";
     }
 }

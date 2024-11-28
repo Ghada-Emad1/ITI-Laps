@@ -15,6 +15,11 @@ public:
         real=_real;
         imag=_imag;
     }
+    Complex (Complex &c){
+        cout<<"copy constructor"<<endl;
+        real=c.real;
+        imag=c.imag;
+    }
     int getReal()
     {
         return real;
@@ -66,6 +71,11 @@ public:
         real=real+1;
         imag=imag+1;
 
+    }
+    Complex operator +=(Complex c){
+        real=real+c.real;
+        imag=imag+c.imag;
+        return *this;
     }
     Complex operator ++(int){
         Complex temp=*this;
@@ -132,6 +142,9 @@ int main()
     Complex c22(2,2),c12;
     cout<<"PostFix operator";
     c12=c22++;
+    c12.Print();
+
+    c12+=c11;
     c12.Print();
     return 0;
 }

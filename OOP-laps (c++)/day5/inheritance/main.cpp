@@ -93,6 +93,7 @@ public:
         grade=_grade;
     }
     void Print(){
+         Person::Print();
          cout << "student data: ID = " << id << ", Name = " << name << ", Age = " << age <<" , Grade = "<<grade<< endl;
 
     }
