@@ -1,15 +1,16 @@
 const CountVowels=(input)=>{
+    //tolowercase 
     let count=0;
 
     for(let i=0;i<input.length;i++){
-        if(input[i]==='a'|| input[i]==='e' ||input[i]==='i'||input[i]==='o'||input[i]==='u'){
+        if(input[i].toLowerCase()==='a'|| input[i].toLowerCase()==='e' ||input[i].toLowerCase()==='i'||input[i].toLowerCase()==='o'||input[i].toLowerCase()==='u'){
             count++;
         }
     }
     
     return count;
 }
-console.log("Number of vowels in string : ",CountVowels("ghada"));
+console.log("Number of vowels in string : ",CountVowels("ghAda"));
 
 "ghada emad"
 const captializeWords=(input)=>{
@@ -38,13 +39,13 @@ console.log(captializeWords("ghada emad"));
 const Count_Character_Occurrences=(input,char)=>{
     let Number_of_occurences=0;
     for(let i=0;i<input.length;i++){
-        if(input[i]==char){
+        if(input[i].toLowerCase()==char.toLowerCase()){
             Number_of_occurences++;
         }
     }
     return Number_of_occurences;
 }
-console.log("Number of Accourence in string is : ",Count_Character_Occurrences("ghada",'d'));
+console.log("Number of Accourence in string is : ",Count_Character_Occurrences("ghaDa",'d'));
 
 
 const CountWords=(input)=>{
@@ -52,11 +53,14 @@ const CountWords=(input)=>{
         console.log("there is no word")
     }
     let count=1;
+    let count_space=0;
     for(let i=0;i<input.length;i++){
         if(input[i]==' '){
             count++;
-        }
+    
+        } 
     }
+    
     return count;
 }
-console.log("Number of Word in string is : ",CountWords("ghada emad bhloul"));
+console.log("Number of Word in string is : ",CountWords("ghada   emad bhloul"));

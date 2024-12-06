@@ -1,4 +1,3 @@
-console.log("function");
 const getStudentGrades=()=>{
    let numberStudent=prompt("What is the Number of student");
    let res=0;
