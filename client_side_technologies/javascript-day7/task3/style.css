@@ -1,0 +1,29 @@
+body{
+    background-image: url(../images/background.jpg);
+   background-size: conver;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    
+}
+.div1{
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.eggPacket{
+width: 200px;
+position:absolute;
+top: 590px;
+bottom: 0;
+
+}
+.egg{
+    width: 60px;
+    height: 60px;
+    z-index: 200px;
+    
+}

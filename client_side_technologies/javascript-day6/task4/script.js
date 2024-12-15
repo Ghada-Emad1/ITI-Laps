@@ -11,9 +11,10 @@ function startSliding(collectImages){
     let intervalId=setInterval(() => {
        
         createImg.src=collectImages[index].img;
-        // console.log(createImg)
-       index=(index+1)%collectImages.length;
-       console.log(index)
+        console.log(createImg)
+        index=(index+1)%collectImages.length;
+        console.log(index)
+       
     },1000);
     return intervalId;
 }

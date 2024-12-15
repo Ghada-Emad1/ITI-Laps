@@ -52,6 +52,7 @@ class Car extends Engine{
                 clearInterval(intervalId);
             }
         }, 500);
+        // if he reached to border of window stop the navigation
         const totalTime = ((window.innerWidth - this.#leftValue - this.createImg.width) / 20) * 500;
         return totalTime;
     }
