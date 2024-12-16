@@ -1,64 +1,74 @@
-let bird = document.querySelector("img");
+
+let bird=document.createElement("img");
 
 class Bird {
     #leftValue;
-    #intervalId;
     #topValue;
-    constructor(left,top) {
-        this.left = left; 
-        this.top=top;
-        this.#leftValue = this.left; 
-        this.#topValue=this.top;
-        bird.style.position = "absolute"; 
-        bird.style.left = `${this.left}px`; 
-        bird.style.top=`${this.top}px`;
+    #intervalId;
+
+
+    constructor(left, top) {
+        this.left = left;
+        this.top = top;
+        this.#leftValue = this.left;
+        this.#topValue = this.top;
+
+        bird.src="../images/R.gif";
+        bird.width=200;
+        bird.height=200;
+
+        bird.style.position = "absolute";
+        bird.style.left = Math.random() * (window.innerWidth-50) + "px";
+        bird.style.top = `${this.top}px`;
         
+        document.body.appendChild(bird);
     }
 
     moveRight() {
+        this.stop();
+
         this.#intervalId = setInterval(() => {
             this.#leftValue += 20;
 
-            if (this.#leftValue + bird.offsetWidth<= 20+window.innerWidth) {
+            if (this.#leftValue + bird.offsetWidth <= window.innerWidth) {
                 bird.style.left = `${this.#leftValue}px`;
             } else {
-                clearInterval(this.#intervalId)
-                this.#leftValue=0;
+                this.#leftValue = 0; 
                 bird.style.left = `${this.#leftValue}px`;
-                this.moveRight();
-                clearInterval(this.#intervalId);
-                
             }
         }, 100);
     }
-    falling(){
-        bird.src="../images/falling.gif";
-        clearInterval(this.#intervalId); 
+
+    stop() {
+        clearInterval(this.#intervalId);
+    }
+
+    falling() {
+        bird.src = "../images/falling.gif"; 
+        this.stop(); 
+
         this.#intervalId = setInterval(() => {
             this.#topValue += 20;
 
             if (this.#topValue + bird.offsetHeight <= window.innerHeight) {
                 bird.style.top = `${this.#topValue}px`;
             } else {
+                this.#topValue = 0;
+                clearInterval(this.#intervalId); 
                 
-                clearInterval(intervalId);  
             }
-            
         }, 100);
     }
-   
-    
 }
 
-
-let flyingBird = new Bird(0,0); 
+let flyingBird = new Bird(0, 0);
 flyingBird.moveRight();
-window.addEventListener("load",function(){
-    bird.addEventListener("click",function(){
-   
-        flyingBird.falling()
+
+window.addEventListener("load", function () {
+    bird.addEventListener("click", function () {
+        flyingBird.falling();
     });
-})
+});
 
 
 

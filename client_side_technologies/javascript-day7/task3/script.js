@@ -47,7 +47,7 @@ class Egg {
         this.#fallEgg.height = 60;
 
         this.#fallEgg.style.position = "absolute";
-        this.#fallEgg.style.left = Math.random() * window.innerWidth + "px";
+        this.#fallEgg.style.left = Math.random() * (window.innerWidth-50) + "px";
         this.#fallEgg.style.top = `${this.top}px`;
 
         this.#topValue = this.top;
@@ -113,7 +113,7 @@ function clearAllEggs() {
 }
 
 function Timer() {
-    let counting = 60;
+    let counting = 31;
     let timer = document.createElement("div");
     timer.style.color = "white";
     let start = document.createElement("button");
