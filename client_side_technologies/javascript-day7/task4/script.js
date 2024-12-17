@@ -13,7 +13,7 @@ class Bird {
         this.#leftValue = this.left;
         this.#topValue = this.top;
 
-        bird.src="../images/R.gif";
+        bird.src="../images/bird_flying.gif";
         bird.width=200;
         bird.height=200;
 
@@ -44,9 +44,8 @@ class Bird {
     }
 
     falling() {
-        bird.src = "../images/falling.gif"; 
+        bird.src = "../images/shooting-sad.gif"; 
         this.stop(); 
-
         this.#intervalId = setInterval(() => {
             this.#topValue += 20;
 
@@ -68,6 +67,7 @@ window.addEventListener("load", function () {
     bird.addEventListener("click", function () {
         flyingBird.falling();
     });
+    
 });
 
 

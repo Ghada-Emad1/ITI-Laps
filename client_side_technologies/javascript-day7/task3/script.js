@@ -75,8 +75,9 @@ class Egg {
             let basketRect = basket.getBoundingClientRect();
             let fallEggRect = this.#fallEgg.getBoundingClientRect();
             if (brokenEgg(basketRect, fallEggRect)) {
-                scoring.innerText = `Scoring ${cnt}`;
                 cnt++;
+                scoring.innerText = `Scoring ${cnt}`;
+              
                 document.body.appendChild(scoring);
                 this.#fallEgg.style.display = "none";
                 clearInterval(this.#intervalId);
