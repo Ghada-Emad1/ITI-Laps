@@ -11,5 +11,10 @@
 ## third month
 - javascript
 - database
-- red hat administration
+- red hat administration 1
+- bash shell 
+- mysql (basic and advanced)
+## fourth month
+- redhat administaration 2
+  
 
