@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Library>
+  <location>Cairo</location>
+  <description>It is an amazing Library</description>
+  <librarian>Ghada Emad</librarian>
+  <book language="arabic">
+   <title>Great Book</title>
+   <ISBN/>
+   <Author>Naguib Mahfouz</Author>
+   <preface/>
+   <part>
+      <title>
+         <chapter chapter="1">
+            <title>Chapter1</title>
+            <summary>it is new chapter</summary>
+            <section>
+                <content>
+                <paragraph>
+                  <![CDATA[
+        Filled with breathtaking landscapes, unexpected challenges      
+        ///\\\
+        _______
+        \\\///
+        It's a story that captivates and inspires,
+         ]]>
+                </paragraph>
+                
+                </content>
+            </section>
+         </chapter>
+      </title>
+   </part>
+  </book>
+</Library>
