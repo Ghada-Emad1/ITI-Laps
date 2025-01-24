@@ -1,0 +1,48 @@
+*{
+    padding:0;
+    margin: 0;
+}
+body{
+    background-image: url(../images/background.jpg);
+   background-size: conver;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    
+}
+.div1{
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.eggPacket{
+width: 200px;
+position:absolute;
+top: 590px;
+bottom: 0;
+
+}
+.startbtn{
+    border:none;
+    display: flex;
+    justify-content: center;
+    margin:20px auto;
+    padding:5px 35px;
+    color:white;
+    font-size: 18px;
+    background-color: rgb(209, 125, 7);
+}
+.startbtn:hover{
+    cursor: pointer;
+    background-color: rgb(226, 177, 108);
+}
+.egg{
+    width: 60px;
+    height: 60px;
+    z-index: 200px;
+    
+}

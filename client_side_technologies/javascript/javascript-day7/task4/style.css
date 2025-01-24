@@ -1,0 +1,8 @@
+body{
+    background-image: url(../images/shootin-bird.jpg);
+   background-size: conver;
+   height: 90vh;
+   width:90%;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
