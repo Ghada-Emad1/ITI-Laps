@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE Library SYSTEM "lap2.dtd">
+
+
+<Library>
+   <location>Cairo</location>
+   <description>It is an amazing Library</description>
+   <librarian>Ghada Emad</librarian>
+   <book language="arabic">
+      <title>Great Book</title>
+      <ISBN />
+      <Author>Naguib Mahfouz</Author>
+      <preface />
+      <part>
+         <BookTitle>
+            <chapter id="ch1">
+               <title>Chapter1</title>
+               <summary>it is new chapter</summary>
+               <section>
+                  <content>
+                     <paragraph>
+                  <![CDATA[
+        Filled with breathtaking landscapes, unexpected challenges      
+        ///\\\
+        _______
+        \\\///
+        It's a story that captivates and inspires,
+         ]]>
+                 </paragraph>
+
+                  </content>
+               </section>
+            </chapter>
+         </BookTitle>
+      </part>
+   </book>
+</Library>
