@@ -1,0 +1,91 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+section{
+    display: flex;
+    justify-content: center;
+    gap:30px;
+    padding:20px 0;
+    border:4px solid rgb(165, 108, 42);
+    border-radius: 9px;
+    margin:20px auto;
+    width:90vw;
+    height: 90vh;
+    transition: 3s transform;
+    
+    box-shadow: brown -20px -20px 140px inset,yellow 10px 10px 30px;
+}
+section:hover{
+    transform: skew(10deg);
+}
+section:active{
+    transform: scale(0.5);
+}
+.first{
+    width: 30%;
+    border:4px solid blue;
+    overflow: auto;
+    columns: 2;
+    padding:2px;
+    border-radius: 7px;
+    column-rule: 2px solid red;
+    box-shadow:rgb(31, 138, 31) -20px -20px 120px inset;
+   
+
+}
+.second{
+    border:4px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    padding-top:20px;
+    justify-content: center;
+    gap: 20px;
+    width: 60%;
+    border-radius: 6px;
+}
+.first:hover{
+    text-decoration: underline;
+}
+mark{
+    background-color: red;
+    transition:  all 3s;
+}
+mark:hover{
+    background-image: linear-gradient(to bottom,red,yellow);
+    
+}
+
+img{
+    border: 6px solid purple;
+    box-shadow: rgb(186, 91, 186) 10px 10px 20px;
+    width: 200px;
+    height: 200px;
+    transition: 0.5s transform;
+}
+img:hover{
+    transform: scale(1.1);
+}
+img:active{
+    transform: scale(2);
+    box-shadow: yellow 10px 10px 20px;
+   
+}
+
+@media screen and (orientation:portrait){
+    mark{
+        background-color: blue;
+
+    }
+    .first{
+        column-rule: 0;
+    }
+    img{
+        transform: rotate(45deg);
+    }
+    img:hover{
+        border:2px dashed blue;
+    }
+}

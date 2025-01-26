@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+       window.addEventListener('load', function () {
+            allimages = document.images;
+            for (var i = 0; i < allimages.length; i++) {
+                allimages[i].addEventListener('dragstart', startdrag);
+                allimages[i].addEventListener('dragend', enddrag);
+            }
+            let bottom = this.document.getElementById('.bottom');
+            bottom.addEventListener('drop', dropped);
+            bottom.addEventListener('dragenter', enterdrag);
+            bottom.addEventListener('dragover', overdrag);
+            let toping = this.document.getElementById('right');
+            toping.addEventListener('dragleave', leavedrag);
+        });//end of load
+        function startdrag(e) {
+             
+            e.dataTransfer.setData("myimg", e.target.outerHTML);
+        }
+        function enddrag(e) {
+            e.preventDefault();
+            e.target.style.display = "none";
+        }
+        function dropped(e) {
+            e.preventDefault();
+            left.innerHTML+=e.dataTransfer.getData("myimg");
+        }
+        function overdrag(e) {
+            e.preventDefault();
+        }
+        function enterdrag(e) {
+            e.preventDefault();
+            e.target.style.backgroundColor = "yellow";
+        }
+        function leavedrag(e) {
+            e.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="top">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/apple.webp" alt="">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/twitter.webp" alt="">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/apple.webp" alt="">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/apple.webp" alt="">
+            <img src="../images/img1.jpg" alt="">
+            <img src="../images/apple.webp" alt="">
+        </div>
+        <div class="bottom">
+
+        </div>
+    </div>
+</body>
+</html>
