@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes moveElement{
+            20%{
+                transform: translate(200px,0px);
+            }
+            40%{
+                transform: translate(200px,200px);
+            }
+            60%{
+                transform: translate(0px,200px);
+            }
+            80%{
+                transform: translate(0px , 0px);
+            }
+
+        }
+        .wrapper{
+            width: 900px; 
+            transition: transform 4s;
+        }
+        .color_box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            animation: moveElement;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+           
+            
+        }
+        .box:hover{
+           animation-play-state: paused;
+        }
+        .pause{
+            animation-play-state: paused;
+        }
+        .btns{
+           display: flex;
+           justify-content: center;
+           gap:30px;
+           margin-bottom: 20px;
+           
+        }
+        .start,.stop{
+          padding:10px 20px;
+          border:none;
+          font-size: 20px;
+          cursor: pointer;
+          color:white;
+        }
+        .start{
+            background-color: purple;
+        }
+        .stop{
+            background-color: green;
+        }
+        
+        
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            let startBox=document.querySelector('.start');
+            let stopBox=document.querySelector('.stop');
+            let mybox=document.querySelector(".color_box");
+            
+            startBox.addEventListener('click',function(){
+                mybox.classList.add('box');
+                mybox.classList.remove('pause');
+            })
+            stopBox.addEventListener('click',function(){
+               mybox.classList.add('pause')
+            })
+            
+        })
+       
+    </script>
+</head>
+<body>
+    <div class="btns">
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+        
+    </div>
+    <div class="wrapper">
+        <div class="color_box">
+ 
+        </div>
+    </div>
+    
+</body>
+</html>

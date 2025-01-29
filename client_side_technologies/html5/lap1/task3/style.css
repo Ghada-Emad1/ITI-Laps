@@ -1,0 +1,159 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+ul{
+    display: flex;
+    justify-content:space-evenly;
+    height: 10vh;
+    align-items: center;
+}
+ul>li{
+    list-style: none;
+    
+}
+ul>li>a{
+    text-decoration: none;
+    font-weight: bold;
+    color:rgb(226, 104, 16);
+}
+ul>li>a:hover{
+    color:rgb(128, 57, 6)
+}
+.intro{
+    background-image: url(../images/laptop.jpeg);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.intro>h3{
+    text-align: center;
+    font-size: 24px;
+}
+.intro>button{
+    padding:10px 30px;
+    border:none;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    background-image: linear-gradient(to right,rgb(241, 183, 245),rgb(236, 37, 226));
+}
+.intro>button:hover{
+    background-image: linear-gradient(to right,rgb(236, 37, 226),rgb(241, 183, 245));
+}
+.heading{
+    text-align: center;
+    margin-top:10px;
+}
+.heading>h1{
+    color:rgb(128, 57, 6);
+
+}
+.heading>p{
+    font-size: 20px;
+    margin-top:5px;
+}
+.map{
+    margin-top:60px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.map>div>img{
+    width:500px;
+    height:400px;  
+}
+.map>.iti>.flexable{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:5px;
+}
+.map>.iti>.flexable>p{
+    width:400px;
+    background-color: rgb(222, 220, 218);
+    padding:30px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.map>.iti>.flexable>p:hover{
+    color:rgb(128, 57, 6);
+    cursor: pointer;
+}
+.map>.iti>.buttons{
+    margin-top:10px;
+    display: flex;
+    gap:10px;
+}
+.checkedmain{
+    color:rgb(98, 43, 3);
+}
+.checkedlocal{
+    color:rgb(226, 104, 16);
+}
+
+footer{
+    margin-top: 20px;
+    padding:5px;
+}
+
+
+footer.mainfooter{
+    padding:10px;
+    display: flex;
+    background-color: black;
+    justify-content: space-around;
+    color:gray;
+    gap:30px;
+}
+footer>.first>h1,footer>.second>h1{
+   color:white;
+   margin-bottom: 10px;
+}
+footer>.first>p:hover{
+   color:white;
+   cursor: pointer;
+}
+footer>.second>button{
+    border:none;
+    outline:none;
+    cursor: pointer;
+    padding:10px 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-weight: bold; 
+}
+footer>.second>button:hover{
+    background-color: rgb(93, 156, 233);
+    color:white;
+}
+footer>.second>button.youtube:hover{
+    background-color: red;
+}
+
+
+@media screen and (orientation:portrait){
+    .map{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .map>.iti>.flexable{
+        display: grid;
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
+       
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        window.addEventListener('load', function () {
+            var playButtons = document.querySelectorAll('.playbtn');
+            var video = document.getElementById('myvideo');
+            playButtons.forEach(function (button, index) {
+                button.addEventListener('click', function () {
+                    if ((index + 1) % 2 !== 0) {  
+                        video.currentTime = 20;
+                    } else {  
+                        video.currentTime = 0;
+                    }
+                    video.play();
+                });
+
+                button.addEventListener('mouseout', function () {
+                    video.pause();
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <section id="wrapper">
+        <div class="first">
+            <div class="buttons">
+                <button class="playbtn">video1</button>
+                <button class="playbtn">video2</button>
+                <button class="playbtn">video3</button>
+                <button class="playbtn">video4</button>
+                <button class="playbtn">video5</button>
+                <button class="playbtn">video6</button>
+                <button class="playbtn">video7</button>
+                <button class="playbtn">video8</button>
+                <button class="playbtn">video9</button>
+                <button class="playbtn">video10</button>
+            </div>
+        </div>
+
+        <div class="second">
+            <video id="myvideo" src="universe.mp4" controls></video>
+        </div>
+    </section>
+</body>
+</html>

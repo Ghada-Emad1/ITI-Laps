@@ -1,0 +1,71 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+#wrapper{
+    border:2px solid black;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    margin: 20px auto;
+    gap:20px;
+    padding:20px;
+    box-shadow: 10px 10px 10px inset rgb(235, 178, 72),0 0 10px 10px rgb(228, 195, 132) inset;
+}
+.first{
+    width:20vw;
+    border:2px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px inset rgb(239, 208, 148),0 0 10px 10px rgb(239, 208, 148) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
+.first>.buttons{
+    display: flex;
+    flex-direction: column;
+    padding:30px;
+    gap:15px;
+    width:10vw;
+    
+    
+}
+.first>.buttons>button{
+    padding:10px 10px;
+    outline: none;
+    border:2px solid rgb(86, 151, 204);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 2s ease;
+    
+}
+.first>.buttons:hover{
+    background-color: orange;
+}
+.buttons>button:hover{
+    transform: rotate(-360deg);
+}
+.buttons>button:active{
+    background:rgb(77, 140, 218);
+    color:white;
+}
+.second{
+    width: 70vw;
+    border:2px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px inset rgb(239, 208, 148),0 0 10px 10px rgb(239, 208, 148) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.second>video{
+    width: 50vw;
+    border-radius: 50px;
+    transition: transform 2s ease;
+}
+.second>video:hover{
+    transform: scale(1.3);
+}

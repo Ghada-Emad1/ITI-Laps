@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Geolocation</title>
+    <style>
+        .wrapper{
+            margin:20px auto;
+            width:80vw;
+            height: 60vh;
+            display: flex;
+            border: 2px solid black;
+            justify-content: center; 
+            padding:10px; 
+            gap:10px;
+            flex-direction: column;
+        }
+        .show{
+            border:2px solid black;
+            height: 15vh;
+            padding:10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .show>button{
+            padding:10px 30px;
+            margin:20px;
+            border:none;
+            outline:none;
+            background-color: rgb(90, 196, 228);
+            color:white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 2s ease;
+        }
+        .show>button:hover{
+            transform: scale(1.3);
+        }
+        #mymap{
+            border:2px solid black;
+            height: 50vh;
+            padding:10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .details{
+            text-align: center;
+            width: 50vw;
+            height: 30vh;
+            background-color: rgb(95, 172, 235);
+            border-radius: 10px;
+            color:white;
+            transition: all 2s ease;
+        }
+        .details:hover{
+            transform: scale(1.3);
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI"></script>
+    <script>
+        window.addEventListener('load', function () {
+            mymap = document.getElementById('mymap');
+            const getLocationButton = document.getElementById("LocationButton");
+            function getLocationDetails() {
+            // Check if geolocation is supported by the browser
+            if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                const accuracy = position.coords.accuracy;
+                const timestamp = new Date(position.timestamp).toLocaleString();
+
+                // Display the location details
+                mymap.innerHTML = `
+                <div class='details'>
+                    <p>Latitude: ${latitude}</p>
+                    <p>Longitude: ${longitude}</p>
+                    <p>Accuracy (meters): ${accuracy}</p>
+                    <p>Timestamp: ${timestamp}</p>
+                    </div>
+                    
+                `;
+            }, function (error) {
+                console.error("Error getting location:", error);
+            });
+        } else {
+            alert("Geolocation is not supported by your browser.");
+        }
+    }
+
+        // Add an event listener to the button
+         getLocationButton.addEventListener("click", getLocationDetails);
+});
+        function getlocationfun() {
+            
+            if (navigator.geolocation) {
+                
+                navigator.geolocation.getCurrentPosition(getposition, errorhandlere);
+            } else {
+              
+                mymap.innerText = "sorry , Update Your Browser And Try Again !";
+            }
+        }
+        function getposition(e) {
+            
+            console.log(e);
+            lat = e.coords.latitude;
+            lon = e.coords.longitude;
+            latlon = lat + " , " + lon;
+            mymap.innerText = latlon;
+            var location = new google.maps.LatLng(lat, lon);
+            var specs = { zoom: 17, center: location };
+            new google.maps.Map(mymap, specs);
+        }
+        function errorhandlere(e) {
+            alert("Error");
+        }
+        
+    </script>
+</head>
+<body>
+    <section class="wrapper">
+        <div class="show">
+            <button onclick="getlocationfun()">Display Map</button>
+            <button onclick="getLocationDetails();" id="LocationButton">Show Details</button>
+        </div>
+        <div id="mymap">
+
+        </div>
+    </section>
+    <!-- <input type="button" value="GetLocation" onclick="getlocationfun();"/> -->
+   
+</body>

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrapper{
+            margin:20px auto;
+            width:90vw;
+            height:90vh;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+        section#left{
+            border:2px solid black;
+            margin:20px auto;
+            width: 80vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+            border-radius: 10px;
+            gap:5px;
+        }
+        section#right{
+            border:2px solid black;
+            margin:20px auto;
+            width: 80vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+            gap:5px;
+            border-radius: 10px;
+
+        }
+      img{
+        width:200px;
+        height: 200px;
+        border: 4px solid rgb(69, 136, 229);
+      }
+      img:focus{
+        transform: rotate(-360deg);
+      }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            
+            allimgs = document.images;
+            for (var i = 0; i < allimgs.length; i++) {
+                allimgs[i].addEventListener('dragstart', startdrag);
+                allimgs[i].addEventListener('dragend', enddrag);
+            }
+            // select left : 
+            left = document.getElementById('left');
+            left.addEventListener('drop', dropped);
+            left.addEventListener('dragenter', enterdrag);
+            left.addEventListener('dragover', overdrag);
+
+            // right
+            right = document.getElementById('right');
+            right.addEventListener('dragleave', leavedrag);
+        });
+        function startdrag(e) {
+            
+            e.dataTransfer.setData('myimg', e.target.outerHTML);
+          
+        }
+        function enddrag(e) {
+            e.preventDefault();
+            e.target.style.display = "none";
+            if(left.children.length===right.children.length){
+                right.innerHTML="Empty";
+                right.style.height="10vh"
+            }
+        }
+        function dropped(e) {
+            e.preventDefault();
+           left.innerHTML += e.dataTransfer.getData('myimg');
+        }
+        function enterdrag(e) {
+            e.preventDefault();
+            left.style.paddingRight="10px"
+        }
+        function overdrag(e) {
+            e.preventDefault();
+        }
+        function leavedrag(e) {
+            e.preventDefault();
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <section id="right">
+            <img src="img1.jpg" />
+            <img src="img2.jpg" />
+            <img src="img3.jpeg" />
+            <img src="img4.jpeg" />
+            <img src="img5.jpeg" />
+        </section>
+        <section id="left">
+            
+        </section>
+    </div>
+   
+</body>
+</html>

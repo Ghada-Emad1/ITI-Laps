@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="number" id="value1"> +
+    <input type="number" id="value2"> =
+    <output id="result"></output>
+
+    <script>
+        let value1 = document.querySelector('#value1');
+        let value2 = document.querySelector('#value2');
+        let output = document.querySelector('#result');
+        value1.value=0;
+        value2.value=0;
+        output.value=0;
+        function updateSum() {
+            let num1 = parseInt(value1.value); 
+            let num2 = parseInt(value2.value);
+            output.textContent = num1 + num2; 
+        }
+        value1.addEventListener('change', updateSum);
+        value2.addEventListener('change', updateSum);
+    </script>
+</body>
+</html>
