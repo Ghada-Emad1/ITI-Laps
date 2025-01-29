@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="mainwrapper">
+        <section id="controlswrapper">
+           <details>
+             <summary>Play | pause</summary>
+             <input type="button" value="Play" onclick="playPauseFun(event)">
+           </details>
+           <details>
+            <summary>Media Size</summary>
+            <select onchange="changeMediaSize(event)">
+                <option >Select Media Size</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+                <option value="fullScreen">fullScreen</option>
+            </select>
+
+            </details>
+            <details>
+                <summary>Volume</summary>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" onchange="changeMediaVolume(event)">
+            </details>
+            <details>
+                <summary>SeekBar</summary>
+                <input type="range" id="autoIncrease" min="0" max="100" step="any" value="0"  onchange="changeSeekBar(event)">
+            </details>
+            <details>
+                <summary>Mute | Loop</summary>
+                <input type="checkbox"  onchange="muteFun();">Mute <br>
+                <input type="checkbox"  onchange="loopFun();">Loop<br>
+
+            </details>
+            <details>
+                <summary> << |>> </summary>
+                <select onchange="changeSpeed(event);">
+                    <option >Select Your Rate</option>
+                    <option value="slowSpeed">x0.5</option>
+                    <option value="normalSpeed">x1.0</option>
+                    <option value="speedUp">x1.5</option>
+                    <option value="speedtoTwo">x2.0</option>
+                </select>
+               
+            </details>
+        </section>
+        <section id="videowrapper">
+            <video src="universe.mp4" controls id="myvideo" height="400" width="400" >
+                <track src="subtitleEn.vtt" kind="subtitles" srclang="en" label="English" default></track>
+            </video>
+
+        </section>
+    </section>
+    <script src="script.js"></script>
+   </body>
+</html>

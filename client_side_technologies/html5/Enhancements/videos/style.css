@@ -1,0 +1,52 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+section{
+    border:2px solid black;
+    padding:5px;
+}
+#mainwrapper{
+    display: flex;
+    margin:20px auto;
+    width: 80vw;
+    height: 80vh;
+}
+#mainwrapper>section{
+    margin: 10px;
+}
+#controlswrapper{
+    width: 200px;
+}
+#videowrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+details{
+    font-weight: bold;
+    margin-top: 0.5rem;
+    padding:5px 10px;
+}
+details:nth-child(odd){
+    background-color: lightgray;
+}
+details:nth-child(even){
+    background-color: lightblue;
+}
+input[type=button]{
+    width: 70px;
+    padding:8px 10px;
+    border:none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+input[type=button]:focus{
+   background-color: black;
+   color:white;
+
+}

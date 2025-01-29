@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="server.js" method="get" id="wrapper">
+        <h1>Form Vaildation</h1>
+        <div>
+            <label for="fname">Enter Your First Name</label>
+            <input type="text" name="fname" value="">
+            <span id="fnameError"></span>
+        </div>
+        <div>
+            <label for="lname">Enter Your Last Name</label>
+            <input type="text" name="lname" id="">
+            <span id="lnameError"></span>
+        </div>
+        <div>
+            <label for="email">Enter Your Email</label>
+            <input type="text" name="email" id="">
+            <span id="emailError"></span>
+        </div>
+        <div>
+            <label for="date">Choose Your Date</label>
+            <input type="date" name="date" id="dateValue">
+        </div>
+        <div>
+            <label for="color">Choose Your Favourite Color</label>
+            <input type="color" name="color" id="colorValue">
+        </div>
+        <div>
+            <label for="">Choose Your Country</label>
+             <select id="country">
+               <option value=""></option>
+               <option value="giza">Giza</option>
+               <option value="tanta">Tanta</option>
+               <option value="alex">Alexandria</option>
+               <option value="cairo">Cairo</option>
+               <option value="mans">Mansoura</option>
+             </select>
+        </div>
+
+        <div id="submit">
+            <input type="submit" value="submit" class="submit">
+        </div>
+        
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
