@@ -2,89 +2,93 @@ import { data } from "./data.js";
 
 let bottom = document.querySelector("#bottom");
 let topEl = document.querySelector("#top");
-let noPrice=document.querySelector("#noPrice");
-let totalPrice=0;
+let noPrice = document.querySelector("#noPrice");
+let totalPrice = 0;
+let draggedItem = null;
+let imageStock = {}; // Track stock in store
 
+// Initialize images and store stock
+data.forEach((item) => {
+    imageStock[item.img] = item.quantity; // Store initial stock
 
+    const img = document.createElement("img");
+    img.src = item.img;
+    img.setAttribute("data-price", item.price);
+    img.setAttribute("data-stock", item.quantity);
+    img.draggable = true;
 
-data.forEach((element) => {
-    const createImage = document.createElement("img");
-    createImage.src = element.img;
-    createImage.setAttribute('price',element.price);
-    createImage.draggable = true;
-    createImage.id=element.quantity;
-    
-    createImage.addEventListener("dragstart", startDrag);
-    createImage.addEventListener("dragend", endDrag);
-    
-    topEl.appendChild(createImage);
+    img.addEventListener("dragstart", startDrag);
+    img.addEventListener("dragend", endDrag);
+
+    topEl.appendChild(img);
 });
 
+["top", "bottom"].forEach((id) => {
+    let section = document.getElementById(id);
+    section.addEventListener("dragover", (event) => event.preventDefault());
+    section.addEventListener("drop", (event) => drop(event, id));
+});
 
-bottom.addEventListener("drop", dropped);
-bottom.addEventListener("dragenter", enterDrag);
-bottom.addEventListener("dragover", overDrag);
-
-topEl.addEventListener("drop", dropped);
-topEl.addEventListener("dragenter", enterDrag);
-topEl.addEventListener("dragover", overDrag);
-
-let droppedSucess=false;
-function startDrag(e) {
-    console.log(e.target)
-    e.dataTransfer.setData("src", e.target.src);
-    console.log("start drag");
-    droppedSucess=false;
+function startDrag(event) {
+    draggedItem = event.target;
+    event.dataTransfer.setData("src", draggedItem.src);
 }
-let currentPrice=0;
-function endDrag(e) {
-    e.preventDefault();
-    
-    if(droppedSucess && parseInt(e.target.id)===1){
-        e.target.remove();
-    }else{
-        let currentQuantity=parseInt(e.target.id);
-        currentQuantity-=1;
-        currentPrice=parseInt(e.target.getAttribute('price')); 
-   
-        console.log(totalPrice);
-        e.target.id=currentQuantity;
+
+function drop(event, targetId) {
+    event.preventDefault();
+    if (!draggedItem) return;
+
+    let imgSrc = draggedItem.src;
+    let price = parseInt(draggedItem.getAttribute("data-price")) || 0;
+    let stock = parseInt(draggedItem.getAttribute("data-stock")) || 1;
+    let target = document.getElementById(targetId);
+    let isMovingToCart = targetId === "bottom";
+    let isMovingToStore = targetId === "top";
+
+    if (isMovingToCart) {
+        if (stock > 1) {
+            draggedItem.setAttribute("data-stock", stock - 1);
+
+            let clone = draggedItem.cloneNode();
+            clone.setAttribute("data-stock", 1);
+            clone.setAttribute("data-price", price);
+            clone.draggable = true;
+            clone.addEventListener("dragstart", startDrag);
+            clone.addEventListener("dragend", endDrag);
+            target.appendChild(clone);
+        } else {
+            target.appendChild(draggedItem);
+        }
+    } else if (isMovingToStore) {
+        let original = document.querySelector(`#top img[src="${imgSrc}"]`);
+        if (original) {
+            let newStock = parseInt(original.getAttribute("data-stock")) + 1;
+            original.setAttribute("data-stock", newStock);
+        } else {
+            let newImg = draggedItem.cloneNode();
+            newImg.setAttribute("data-stock", 1);
+            newImg.setAttribute("data-price", price);
+            newImg.draggable = true;
+            newImg.addEventListener("dragstart", startDrag);
+            newImg.addEventListener("dragend", endDrag);
+            topEl.appendChild(newImg);
+        }
+
+        draggedItem.remove();
     }
-    
-    totalPrice+=currentPrice;
-    
-    console.log("end drag");
+
+    updatePrice();
 }
 
-function dropped(e) {
-    e.preventDefault();
-    console.log("drop");
-    const dropTarget = e.currentTarget; 
-    const draggedImageSrc = e.dataTransfer.getData("src"); 
-    if (dropTarget.id === "bottom") {
-        console.log("in dropep",draggedImageSrc)
-        addImageToContainer(bottom, draggedImageSrc);
-    } else if (dropTarget.id === "top") {
-        addImageToContainer(topEl, draggedImageSrc);
-    }
-    droppedSucess=true;
+function endDrag(event) {
+    event.preventDefault();
+    draggedItem = null;
 }
 
-function addImageToContainer(container, src) {
-    const newImage = document.createElement("img");
-    newImage.src = src;
-    newImage.draggable = true;
-    newImage.addEventListener("dragstart", startDrag);
-    newImage.addEventListener("dragend", endDrag);
-    container.appendChild(newImage);
-}
-
-function enterDrag(e) {
-    e.preventDefault();
-    console.log("enter drag");
-}
-
-function overDrag(e) {
-    e.preventDefault();
-    console.log("over drag",e.currentTarget);
+function updatePrice() {
+    let total = 0;
+    document.querySelectorAll("#bottom img").forEach((img) => {
+        total += parseInt(img.getAttribute("data-price")) || 0;
+    });
+    noPrice.innerText = `Total Price: $${total}`;
 }
