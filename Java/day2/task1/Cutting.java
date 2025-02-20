@@ -3,7 +3,7 @@ class Cutting{
     public static void main(String args[]){
         if(args.length==0){
            System.out.println("Please Enter An Ip");
-           retrun;
+            return ;
         }
         String[]res=IpCutter(args[0]);
         for(int i=0;i<res.length;i++){
