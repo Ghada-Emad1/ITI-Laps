@@ -23,5 +23,7 @@
 ## fifth month 
 - bootstrap framework
 - vuejs
+- PHP
+- Agile 
 
 
