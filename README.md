@@ -25,5 +25,6 @@
 - vuejs
 - PHP
 - Agile 
+- Laravel
 
 
