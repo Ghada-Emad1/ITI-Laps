@@ -51,12 +51,13 @@
                 <div class="px-4 py-4">
                     <div class="mb-2">
                         <h3 class="text-lg font-medium text-gray-800">Title :- <span
-                                class="font-normal">{{$post['title']}}</span></h3>
+                                class="font-normal">{{$post->title}}</span></h3>
                     </div>
                     <div>
                         <h3 class="text-lg font-medium text-gray-800">Description :-</h3>
-                        <p class="text-gray-600">{{$post['description']}}</p>
+                        <p class="text-gray-600">{{$post->description}}</p>
                     </div>
+                    
                 </div>
             </div>
 
@@ -65,31 +66,51 @@
             <div class="bg-white rounded border border-gray-200">
                 <div class="px-4 py-3 bg-gray-50 border-b border-gray-200">
                     <h2 class="text-base font-medium text-gray-700">Post Creator Info</h2>
+                    
                 </div>
-                <div class="px-4 py-4">
-                    <div class="mb-2">
-                        <h3 class="text-lg font-medium text-gray-800">Name :- <span
-                                class="font-normal">{{$post['posted_by']['name']}}</span></h3>
-                    </div>
-                    <div class="mb-2">
-                        <h3 class="text-lg font-medium text-gray-800">Email :- <span
-                                class="font-normal">{{$post['posted_by']['email']}}</span></h3>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-medium text-gray-800">Created At :- <span
-                                class="font-normal">{{$post['posted_by']['created_at']}}</span></h3>
-                    </div>
-                </div>
+                
             </div>
 
 
             <!-- Back Button -->
-            <div class="flex justify-end">
-                <a href="/posts"
-                    class="px-4 py-2 bg-gray-600 text-white font-medium rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    Back to All Posts
-                </a>
+            
+        </div>
+    </div>
+
+    <div class="mt-6 bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Comments</h2>
+    
+        <!-- Add Comment Form -->
+        <form method="POST" action="{{ route('comments.store', $post) }}" class="mb-4">
+            @csrf
+            
+            <textarea name="body" rows="3" class="w-full rounded-md border-gray-300 shadow-sm py-2 px-3"
+                placeholder="Write a comment..." required></textarea>
+            <button type="submit" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Submit</button>
+        </form>
+    
+        <!-- List of Comments -->
+        {{-- {{ dd($post->comments) }} --}}
+        @foreach($post->comments as $comment)
+            <div class="border-t pt-4 mt-4">
+                <p class="text-gray-700">{{ $comment->body }}</p>
+                
+
+                <!-- Delete Comment Button (Only show if user owns the comment) -->
+                @if(auth()->id() === $comment->user_id)
+                    <form method="POST" action="{{ route('comments.destroy', $comment) }}" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                    </form>
+                @endif
             </div>
+        @endforeach
+        <div class="flex justify-end">
+            <a href="/posts"
+                class="px-4 py-2 bg-gray-600 text-white font-medium rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                Back to All Posts
+            </a>
         </div>
     </div>
 </body>

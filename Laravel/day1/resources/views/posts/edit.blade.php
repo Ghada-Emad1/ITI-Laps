@@ -30,8 +30,9 @@
                         <label for="creator" class="block text-sm font-medium text-gray-700 mb-1">Post Creator</label>
                         <select name="post_creator" id="creator"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 py-2 px-3 border bg-white">
-                            <option value="1">Ghada</option>
-                            <option value="2">Gehad</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}">{{$user->name}}</option>
+                            @endforeach
                         </select>
                     </div>
 

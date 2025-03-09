@@ -3,104 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = [
-            ["id" => 1, "title" => "PHP", 'posted_by' => 'Ghada', 'created_at' => '2025-03-08 7:57 pm '],
-            ["id" => 2, "title" => "Laravel", 'posted_by' => 'Gehad', 'created_at' => '2025-03-04 5:05 pm '],
-
-        ];
+        $posts = Post::paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
     public function create()
+
     {
-        return view('posts.create');
+        $users = User::all();
+        return view('posts.create', ['users' => $users]);
     }
     public function show($id)
     {
-        $post = [
-            'id' => 1,
-            'title' => 'PHP',
-            'description' => 'programmaing language',
-            'posted_by' => [
-                'name' => 'Ghada',
-                'email' => 'ghada@gmail.com',
-                'created_at' => 'Thursday 25th of December 1975 02:15:16 PM'
-            ],
-            'created_at' => '2025-03-08 7:57 pm',
-        ];
+        $post = Post::find($id);
+
         return view('posts.show', ['post' => $post]);
     }
     public function store()
     {
         $title = request()->title;
         $description = request()->description;
-        return to_route('posts.show', 1);
+        $postCreator=request()->postCreator;
+
+        $post = Post::create([
+            'title' => $title,
+            'description' => $description,
+            'user_id' => $postCreator
+        ]);
+        return to_route('posts.show', $post->id);
     }
     public function edit($id)
     {
-        $post = [
-            'id' => 1,
-            'title' => 'PHP',
-            'description' => 'programmaing language',
-            'posted_by' => [
-                'name' => 'Ghada',
-                'email' => 'ghada@gmail.com',
-                'created_at' => 'Thursday 25th of December 1975 02:15:16 PM'
-            ],
-            'created_at' => '2025-03-08 7:57 pm',
-        ];
-        return view('posts.edit', ['post' => $post]);
+        $post = Post::find($id);
+        $users = User::all();
+        return view('posts.edit', ['post' => $post,'users'=>$users]);
     }
 
     public function update($id)
     {
-        // Dummy posts array
-        $posts = [
-            [
-                'id' => 1,
-                'title' => 'PHP',
-                'description' => 'programmaing language',
-                'posted_by' => 'Ghada',
-                'created_at' => '2025-03-08 7:57 pm',
-            ],
-            ["id" => 2, "title" => "Laravel", 'posted_by' => 'Gehad', 'created_at' => '2025-03-04 5:05 pm '],
-
-        ];
-
-        foreach ($posts as &$post) {
-            if ($post['id'] == $id) {
-                $post['title'] = request()->title;
-                $post['description'] = request()->description;
-            }
-        }
-
-        return view('posts.index', ['posts' => $posts]);
+        $post= Post::find($id);
+        // dd($post->title);
+        $post->title = request()->title;
+        $post->description = request()->description;
+        $post->user_id = request()->user_id;
+        $post->save();
+        return redirect()->route('posts.index');
     }
+
 
     public function destroy($id)
     {
 
-        $posts = [
-            [
-                'id' => 1,
-                'title' => 'PHP',
-                'description' => 'programmaing language',
-                'posted_by' => 'Ghada',
-                'created_at' => '2025-03-08 7:57 pm',
-            ],
-            ["id" => 2, "title" => "Laravel", 'posted_by' => 'Gehad', 'created_at' => '2025-03-04 5:05 pm '],
-
-        ];
-        foreach ($posts as $key => $post) {
-            if ($post['id'] == $id) {
-                unset($posts[$key]); 
-                break;
-            }
+        $deleted = Post::where('id', $id)->delete();
+        dd($deleted);
+        if($deleted){
+            return redirect()->route('posts.index');
         }
-         return view('posts.index', ['posts'=> $posts]);
+        
+        
     }
 }
