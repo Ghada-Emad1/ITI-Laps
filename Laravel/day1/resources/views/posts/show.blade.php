@@ -48,7 +48,9 @@
                 <div class="px-4 py-3 bg-gray-50 border-b border-gray-200">
                     <h2 class="text-base font-medium text-gray-700">Post Info</h2>
                 </div>
+               
                 <div class="px-4 py-4">
+                  
                     <div class="mb-2">
                         <h3 class="text-lg font-medium text-gray-800">Title :- <span
                                 class="font-normal">{{$post->title}}</span></h3>
@@ -66,7 +68,13 @@
             <div class="bg-white rounded border border-gray-200">
                 <div class="px-4 py-3 bg-gray-50 border-b border-gray-200">
                     <h2 class="text-base font-medium text-gray-700">Post Creator Info</h2>
-                    
+                    <p>Name : {{$post->user? $post->user->name :"no user "}}</p>
+                    <p>
+                        email : {{ $post->user ? $post->user->email :"no email" }}
+                    </p>
+                    <p>Created at : {{$post->user? $post->user->created_at->format('Y-m-d'):"no date "}}</p>
+                    <p>Image :</p>
+                    <img src="{{ $post->image }}" alt="image">
                 </div>
                 
             </div>

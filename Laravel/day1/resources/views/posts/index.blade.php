@@ -14,22 +14,31 @@
                     <tr>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">#</th>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Title</th>
+                        <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Slug</th>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Posted By</th>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Created At</th>
+                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Image</th>
                         <th class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($posts as $post)
-                   
-
                         <tr>
                             <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">{{ $post->id }}</td>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ $post->title }}</td>
+                            <td><a href="{{ route('posts.show', $post->slug) }}">{{ $post->slug }}</a></td>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ $post->user ? $post->user->name : 'No User Found' }}</td>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ $post->formatted_created_at }}</td>
+                        <td>
+                            @if ($post->image)
+                                <img src="{{ $post->image }}" alt="">
+                            @else
+                                No Image
+                            @endif
+                        </td>
+
                             <td class="px-4 py-2 whitespace-nowrap text-gray-700 space-x-2">
-                                <a href="{{ route('posts.show', $post['id']) }}">
+                                <a href="{{ route('posts.show', $post->slug) }}">
                                     <x-button type="primary">View</x-button>
                                 </a>
 
