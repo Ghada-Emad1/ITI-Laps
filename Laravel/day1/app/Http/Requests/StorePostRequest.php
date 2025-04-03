@@ -38,6 +38,7 @@ class StorePostRequest extends FormRequest
             'description.min' => 'The description must be at least 10 characters.',
             'user_id.required' => 'A user ID is required.',
             'user_id.exists' => 'The user ID does not exist in the database.',
+            'image.required'=>'Please Upload a valid image',
             'image.image' => 'The file must be an image.',
             'image.mimes' => 'The image must be a file of type: jpg, png.',
             'image.max' => 'The image size must not exceed 2MB.',

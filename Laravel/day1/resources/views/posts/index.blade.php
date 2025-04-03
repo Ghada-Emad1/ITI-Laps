@@ -6,6 +6,7 @@
         </a>
     </div>
 
+
     <!-- Table Component -->
     <div class="mt-6 rounded-lg border border-gray-200">
         <div class="overflow-x-auto rounded-t-lg">
@@ -23,7 +24,9 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($posts as $post)
+                  
                         <tr>
+                            
                             <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-900">{{ $post->id }}</td>
                             <td class="px-4 py-2 whitespace-nowrap text-gray-700">{{ $post->title }}</td>
                             <td><a href="{{ route('posts.show', $post->slug) }}">{{ $post->slug }}</a></td>

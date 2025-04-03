@@ -55,11 +55,7 @@
                         @else
                             <p>No Image</p>
                         @endif
-                        <form action="{{ route('posts.deleteImage', $post->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Delete Image</button>
-                        </form>
+                       
                         
                         <label for="image">Change Image:</label>
                         <input type="file" name="image">

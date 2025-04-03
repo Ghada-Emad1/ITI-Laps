@@ -31,13 +31,13 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request)
     {
-        // Validate input and handle file upload
+        
         $validated = $request->validated();
+        // dd($request->validated(),$request->image);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('posts', 'public');
         }
-
         // Create post
         $post = Post::create($validated);
 
@@ -96,13 +96,5 @@ public function destroy($id)
     return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
 }
 
-    public function deleteImage(Post $post)
-    {
-        if ($post->image) {
-            $post->image = null; // Set the image attribute to null
-            // Save changes to the database
-        }
-        $post->save();
-        return back()->with('success', 'Image deleted successfully.');
-    }
+    
 }
