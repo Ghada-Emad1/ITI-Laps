@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "commander": "^13.1.0"
+  },
+  "name": "day1",
+  "version": "1.0.0",
+  "description": "to do list",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
