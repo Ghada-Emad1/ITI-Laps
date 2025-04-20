@@ -1,0 +1,19 @@
+[
+    {
+        "firstname": "ghada",
+        "lastname": "emad",
+        "email": "ghada@gmail.com",
+        "password": "123456",
+        "mobile": "01032014226",
+        "funding": [
+            {
+                "title": "New",
+                "details": "new details",
+                "target": 20000,
+                "start_time": "2025-04-20",
+                "end_time": "2025-10-10"
+            }
+            
+        ]
+    }
+]
