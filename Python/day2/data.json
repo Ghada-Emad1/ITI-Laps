@@ -7,13 +7,38 @@
         "mobile": "01032014226",
         "funding": [
             {
-                "title": "New",
-                "details": "new details",
+                "id": 2,
+                "title": "New title ",
+                "details": "New details added",
                 "target": 20000,
-                "start_time": "2025-04-20",
-                "end_time": "2025-10-10"
+                "start_time": "2025-04-21",
+                "end_time": "2025-12-02"
             }
-            
+        ]
+    },
+    {
+        "firstname": "Ahmed",
+        "lastname": "Ali",
+        "email": "ahmed@gmail.com",
+        "password": "123456",
+        "mobile": "01032014225",
+        "funding": [
+            {
+                "id": 1,
+                "title": "businness issue",
+                "details": "help to grow my business",
+                "target": 30000,
+                "start_time": "2025-04-21",
+                "end_time": "2026-10-02"
+            },
+            {
+                "id": 2,
+                "title": "buy laptoop",
+                "details": "please help me to get it",
+                "target": 50000,
+                "start_time": "2025-04-21",
+                "end_time": "2026-04-01"
+            }
         ]
     }
 ]
