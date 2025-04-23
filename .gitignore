@@ -9,4 +9,4 @@ obj/Debug/
 .layout
 .depend
 .cbp
-
+*/.env
