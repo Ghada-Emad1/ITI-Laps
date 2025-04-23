@@ -26,5 +26,25 @@
 - PHP
 - Agile 
 - Laravel
+## sixth month
+- IOT
+- project on laravel & vue (full stack)
+- App Security
+# seventh month
+- Nodejs
+- Mongodb
+- angular
+- typescript
+- python
+- web sockets
+  
+
+
+
+
+
+
+
+
 
 
