@@ -19,10 +19,7 @@ web_socket.onmessage = (event) => {
       userListDiv.innerHTML =
         "<h5>Online Users :</h5>" +
         users.map((user) => `<div class="user">${user}</div>`).join("");
-    } else if (message.user === "History") {
-      showMessage(message.text, "server");
-    }
-    else if (message.user && message.text) {
+    } else if (message.user && message.text) {
       const fullMessage = `${message.user}: ${message.text}`;
 
       showMessage(fullMessage, "server");
@@ -65,7 +62,7 @@ function showMessage(message, type) {
     messageDiv.classList.add(`${type}-message`);
     messageDiv.textContent = message;
   }
- 
+
   messagesDiv.appendChild(messageDiv);
 }
 
@@ -86,13 +83,6 @@ function goToRoom() {
     user: nickName,
   };
 
-  window.nickName = nickName;
   web_socket.send(JSON.stringify(joinUser));
 }
-window.addEventListener("beforeunload", () => {
-  const leaveMsg = {
-    user: "Server",
-    text: `${window.nickName} has left the chat.`,
-  };
-  
-});
+

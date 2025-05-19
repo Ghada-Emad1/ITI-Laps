@@ -1,0 +1,124 @@
+pull technology : 
+xml : convert data into suitable format that can be readable , 
+json is flexible that i can use to send data , 
+deserilazaiton : covert string to json 
+serlization : (what)??
+http is text based protocol , so i must convert our json  to string .
+xml is slower than json .
+grpc api send binary [ must learn ] , 
+
+views.py
+def index(request):
+     students=Student.objects.all()
+     student_names=[student.name for student in students]
+     return HttpResponse(student_names)
+     
+  HttpResponse its self convert any data that enter into string   
+urls.py
+   path("",views.index,name="index")
+
+
+here we will make serilazaiton by me , so when  it return httpresponse the type return will be array of dictory
+
+def index(request):
+     students=Student.object.all()
+     serialized_students=[]
+     for student in students:
+          serialized_students.append({
+              "name":student.name,
+              "age":student.age
+          })
+     # convert list of dictory to string
+     serialized_students=json.dumps(all_studnets)
+     return HttpResponse(serialized_students)
+
+
+
+always send your serialization from your view or response
+import requests
+response=requests.get("http:localhost:8000/trainines")
+print(resonse.text)
+
+
+
+
+every programming language have the tool to convert from object to string (json)
+import json
+def index(request):
+     students=Student.object.all()
+     all_students=[]
+     for student in students:
+          all_students.append({
+              "name":student.name,
+              "age":student.age
+          })
+     # convert list of object to string (serialization )
+     serialized_students=json.dumps(all_studnets)
+     return HttpResponse(serialized_students)
+
+
+
+# so now here you can convert your text into json 
+import requests
+response=requests.get("http:localhost:8000/trainines")
+print(response , type(response))
+my_students=json.loads(response.text)
+print(my_students, type(my_students))
+for student in response.json():
+    print(student.name,student.age)
+
+
+
+
+
+# we will make folder js in students folder
+base.html
+{% load static %}
+<head>
+    <mets charset="UTF-8">
+    <title>
+        {% block 'title' %}
+        My Site
+        {% endblock %}
+    </title>
+    {% block 'css'%}{% endblock %}
+    <script defer scr="{% static 'students/js/ajax.js' %}">
+    
+</head>
+
+index.html
+{% extends 'students/base.html' %}
+{% load static %}
+{% block 'title'%}
+My site - All Students
+{% endblock %}
+{% block 'content' %}
+Students
+{% endblock %}
+
+
+in view.py
+def index_page(request):
+    return render(request,'students/index.html')
+    
+    
+in ajax.js
+const myReqest=new XmlHttpRequest(); # every request status is changed
+myRequest.onreadystatechange=function(){ # every change we will do this
+    console.log(myRequest.readyState)
+    if(myRequst.readyState === 4 && myRequest.status === 200){
+         console.log(Json.parse(myRequest.responseText))
+    }
+}
+myRequest.send("GET","http://localhost:8000/trainees")
+console.log(myRequest.open("GET","http://localhost:8000/trainees"))
+myRequest.send()
+
+
+
+
+
+
+
+
+
