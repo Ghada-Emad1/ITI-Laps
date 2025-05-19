@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "classmap": ["Models"],
+        "files" :["config.php"]
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}
