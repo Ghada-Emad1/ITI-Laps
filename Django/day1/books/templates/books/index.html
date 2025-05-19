@@ -1,0 +1,9 @@
+{% extends 'books/base.html' %} 
+{% load static %} 
+{% block content %}
+ Books are : <br />
+{% for book in books %}
+
+<a href="{% url 'books:book_details' book.id %}">{{ book.name}}</a><br />
+{% endfor %} 
+{% endblock %}

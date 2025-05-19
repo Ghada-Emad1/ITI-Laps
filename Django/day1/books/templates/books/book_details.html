@@ -1,0 +1,12 @@
+{% extends 'books/base.html'%}
+{% load static %}
+{% block content %}
+    
+    <h1>{{book.title}}</h1>
+    <a href="{% url 'books:author' book.author.id %}">{{book.author.name}}</a>
+    <p>Publish_date {{book.publish_date}}</p>
+
+    <small>Price: ${{book.price}}</small>
+    <p>Appropriate Age : {{book.appropriate_age}}</p>
+    <img src="{% static book.image_url %}" alt="{{book.title}}" />
+{% endblock %}   

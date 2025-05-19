@@ -1,0 +1,24 @@
+body{
+    padding: 0;
+    margin:0;
+}
+header{
+    background-color: black;
+    color:white;
+    text-align: center;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+footer{
+    min-height: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: black;
+    color:white;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 10px;
+}

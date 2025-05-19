@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "title": "Book 1",
+        "author": "Ghada ",
+        "price": 10.99,
+        "description": "Amazing Book ",
+        "image_url": "book1.jpg"
+    },
+    {
+        "id":2,
+        "title": "Book 2",
+        "author": "Author 2",
+        "price": 12.99,
+        "description": "Description for Book 2",
+        "image_url": "book2.jpg"
+    },
+    {
+        "id":3,
+        "title": "Book 3",
+        "author": "Author 3",
+        "price": 15.99,
+        "description": "Description for Book 3",
+        "image_url": "book3.jpg"
+    }
+]
