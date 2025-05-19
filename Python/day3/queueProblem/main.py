@@ -1,5 +1,4 @@
 class Queue:
-
     def __init__(self, size=0):
         self.rear = -1
         self.front = -1
