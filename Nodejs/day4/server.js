@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const { aurhorizeAdmin, verifiedUser } = require("./middleware/auth");
 
 const app = express();
-const port = 4000;
+const port = 3000;
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");

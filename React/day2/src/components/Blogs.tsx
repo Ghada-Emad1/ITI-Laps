@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SingleBlog from "./SingleBlog";
@@ -13,7 +12,7 @@ const Blogs = () => {
   useEffect(() => {
     allPosts();
   }, []);
-  const showId = (id) => {
+  const showId = (id:number) => {
     console.log(id);
   };
   return (
